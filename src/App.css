@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+#root {
+  height: 100%;
+}
+
+.background-image {
+  height: 2000px;
+  background-image: url(https://content.codecademy.com/programs/react/jammming/background_photo_desktop.jpg);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.headline {
+  color: #fff;
+  text-align: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
