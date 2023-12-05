@@ -1,6 +1,7 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import TrackList from './components/TrackList/TrackList';
+import Playlist from './components/Playlist/Playlist';
 
 function App() {
   const [selectedSongIds, setSelectedSongIds] = useState([]);
@@ -14,13 +15,23 @@ function App() {
 
   // State to hold the track data
   const [trackData, setTrackData] = useState(hardcodedTracks);
+  const [playlist, setPlaylist] = useState([]);
+
+  const addToPlaylist = (selectedTTrack) => {
+    const isTrackInPlaylist = playlist.some((track) => track.id === selectedTTrack.id);
+
+    if (!isTrackInPlaylist) {
+      setPlaylist([...playlist, selectedTTrack]);
+    }
+  };
 
   return (
     <div>
-     <div className='background-image'>
-      <h1 className="headline">Jam🎶ming</h1>
-      <TrackList tracks={trackData} />
-     </div>
+      <div className='background-image'>
+        <h1 className="headline">Jam🎶ming</h1>
+        <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
+        <Playlist playlist={playlist} />
+      </div>
     </div>
   )
 }
