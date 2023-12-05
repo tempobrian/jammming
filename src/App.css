@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-#root {
-  height: 100%;
-}
-
 .background-image {
   height: 2000px;
   background-image: url(https://content.codecademy.com/programs/react/jammming/background_photo_desktop.jpg);
@@ -17,6 +13,7 @@
 .headline {
   color: #fff;
   text-align: center;
+  margin-top: 0;
 }
 
 .App-logo {
