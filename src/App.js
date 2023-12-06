@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TrackList from './components/TrackList/TrackList';
 import Playlist from './components/Playlist/Playlist';
 
@@ -14,23 +14,35 @@ function App() {
   ];
 
   // State to hold the track data
+  const [playlistTitle, setPlaylistTitle] = useState('My Playlist');
   const [trackData, setTrackData] = useState(hardcodedTracks);
   const [playlist, setPlaylist] = useState([]);
 
-  const addToPlaylist = (selectedTTrack) => {
-    const isTrackInPlaylist = playlist.some((track) => track.id === selectedTTrack.id);
+  const addToPlaylist = (selectedTrack) => {
+    const isTrackInPlaylist = playlist.some((track) => track.id === selectedTrack.id);
 
     if (!isTrackInPlaylist) {
-      setPlaylist([...playlist, selectedTTrack]);
+      setPlaylist([...playlist, selectedTrack]);
     }
   };
+
+  const removeFromPlaylist = (trackId) => {
+    const updatedPlaylist = playlist.filter((track) => track.id !== trackId);
+    setPlaylist(updatedPlaylist);
+  }
+
+  const updatePlaylistTitle = (newTitle) => {
+    setPlaylistTitle(newTitle);
+  }
 
   return (
     <div>
       <div className='background-image'>
         <h1 className="headline">Jam🎶ming</h1>
-        <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
-        <Playlist playlist={playlist} />
+        <div>
+          <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
+          <Playlist playlist={playlist} playlistTitle={playlistTitle} removeFromPlaylist={removeFromPlaylist} />
+        </div>
       </div>
     </div>
   )

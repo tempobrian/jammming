@@ -9,7 +9,7 @@ const TrackList = ({ tracks, addToPlaylist }) => {
 					return (
 						<li key={track.id}>
 							<strong>{track.name}</strong> by {track.artist} from the album {track.album}
-							<button onClick={() => addToPlaylist(track)}>Add</button>
+							<button onClick={() => addToPlaylist(track)}>+</button>
 						</li>)
 				})}
 			</ul>
