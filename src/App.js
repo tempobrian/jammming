@@ -38,8 +38,8 @@ function App() {
   return (
     <div>
       <div className='background-image'>
-        <h1 className="headline">Jam🎶ming</h1>
-        <div>
+        <header className="headline">Jam🎶ming</header>
+        <div className="content-table">
           <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
           <Playlist playlist={playlist} playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} removeFromPlaylist={removeFromPlaylist} />
         </div>

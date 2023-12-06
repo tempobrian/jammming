@@ -4,7 +4,19 @@
 
 h2,
 li {
+  margin: 0;
   color: #fff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.content-table {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px auto;
 }
 
 .background-image {
@@ -16,7 +28,8 @@ li {
 }
 
 .headline {
-  background-color: #030c6ba1;
+  font-size: 2.4em;
+  background-color: #1e073c;
   color: #fff;
   text-align: center;
   margin-top: 0;
@@ -34,7 +47,7 @@ li {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #1e073c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
