@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+h2,
+li {
+  color: #fff;
+}
+
 .background-image {
   height: 2000px;
   background-image: url(https://content.codecademy.com/programs/react/jammming/background_photo_desktop.jpg);

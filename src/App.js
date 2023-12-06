@@ -41,7 +41,7 @@ function App() {
         <h1 className="headline">Jam🎶ming</h1>
         <div>
           <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
-          <Playlist playlist={playlist} playlistTitle={playlistTitle} removeFromPlaylist={removeFromPlaylist} />
+          <Playlist playlist={playlist} playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} removeFromPlaylist={removeFromPlaylist} />
         </div>
       </div>
     </div>

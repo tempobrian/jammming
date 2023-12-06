@@ -1,9 +1,10 @@
 import React from "react";
+import Input from "../Input/Input";
 
-const Playlist = ({ playlist, playlistTitle, removeFromPlaylist }) => {
+const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, setPlaylistTitle }) => {
 	return (
 		<div>
-			<h2>{playlistTitle}</h2>
+			<Input value={playlistTitle} onChange={(e) => setPlaylistTitle(e.target.value)} />
 			<ul>
 				{playlist.map((track) => (
 					<li key={track.id}>
