@@ -31,6 +31,14 @@ function App() {
     setPlaylist(updatedPlaylist);
   }
 
+  const savePlaylist = () => {
+    const trackURIs = playlist.map((track) => track.uri);
+    setPlaylist([])
+    // Log or send track URIs to the server (for testing, replace with Spotify API calls later)
+    console.log('Track URIs:', trackURIs);
+  };
+
+
   const updatePlaylistTitle = (newTitle) => {
     setPlaylistTitle(newTitle);
   }
@@ -41,7 +49,13 @@ function App() {
         <header className="headline">Jam🎶ming</header>
         <div className="content-table">
           <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
-          <Playlist playlist={playlist} playlistTitle={playlistTitle} setPlaylistTitle={setPlaylistTitle} removeFromPlaylist={removeFromPlaylist} />
+          <Playlist
+            playlist={playlist}
+            playlistTitle={playlistTitle}
+            setPlaylistTitle={setPlaylistTitle}
+            removeFromPlaylist={removeFromPlaylist}
+            savePlaylist={savePlaylist}
+          />
         </div>
       </div>
     </div>
