@@ -1,11 +1,27 @@
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Spotify from './components/Spotify/Spotify';
 import TrackList from './components/TrackList/TrackList';
 import Playlist from './components/Playlist/Playlist';
 
 function App() {
-  const [selectedSongIds, setSelectedSongIds] = useState([]);
-  const [searchKey, setSearchKey] = useState("")
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = Spotify.getAccessToken();
+    setLoggedIn(!!token);
+  }, []);
+
+  const handleLogin = () => {
+    Spotify.login();
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    Spotify.logout();
+    setLoggedIn(false);
+  }
+
   // Hardcoded array of track objects
   const hardcodedTracks = [
     { id: 1, name: 'Song 1', artist: 'Artist 1', album: 'Album 1' },
@@ -47,6 +63,10 @@ function App() {
     <div>
       <div className='background-image'>
         <header className="headline">Jam🎶ming</header>
+        <h1>{loggedIn ? 'Logged In' : 'Not Logged In'}</h1>
+        <button onClick={loggedIn ? handleLogout : handleLogin}>
+          {loggedIn ? 'Logout' : 'Login with Spotify'}
+        </button>
         <div className="content-table">
           <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
           <Playlist
