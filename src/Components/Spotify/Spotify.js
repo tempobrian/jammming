@@ -39,6 +39,31 @@ const Spotify = {
   isLoggedIn() {
     return !!accessToken;
   },
+
+  async getUserInfo() {
+    const accessToken = this.getAccessToken();
+
+    if (!accessToken) {
+      return null;
+    }
+
+    try {
+      const response = await fetch('https://api.spotify.com/v1/me', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const userInfo = await response.json();
+        return userInfo;
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+
+    return null;
+  },
 };
 
 export default Spotify;

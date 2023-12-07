@@ -6,10 +6,20 @@ import Playlist from './components/Playlist/Playlist';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    const token = Spotify.getAccessToken();
-    setLoggedIn(!!token);
+    const fetchData = async () => {
+      const token = Spotify.getAccessToken();
+      setLoggedIn(!!token);
+
+      if (token) {
+        const user = await Spotify.getUserInfo();
+        setUserInfo(user);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const handleLogin = () => {
@@ -20,7 +30,8 @@ function App() {
   const handleLogout = () => {
     Spotify.logout();
     setLoggedIn(false);
-  }
+    setUserInfo(null);
+  };
 
   // Hardcoded array of track objects
   const hardcodedTracks = [
@@ -63,10 +74,26 @@ function App() {
     <div>
       <div className='background-image'>
         <header className="headline">Jam🎶ming</header>
-        <h1>{loggedIn ? 'Logged In' : 'Not Logged In'}</h1>
-        <button onClick={loggedIn ? handleLogout : handleLogin}>
-          {loggedIn ? 'Logout' : 'Login with Spotify'}
-        </button>
+        <div id='login-container'>
+          <div className='login'>
+            {loggedIn ? (
+              <div>
+                <h2>Logged In as {userInfo?.display_name}</h2>
+                {userInfo?.images && userInfo.images.length > 0 && (
+                  <img src={userInfo.images[0].url} alt="User Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+                )}
+                <button className='big-btn' onClick={handleLogout}>Logout</button>
+              </div>
+            ) : (
+              <div>
+                <button className='big-btn' onClick={handleLogin}>Login with Spotify</button>
+                <p class="login-desc">Please login to get access to  spotify content.</p>
+                <p class="login-desc-small">You will automatically be redirected to this page after login.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         <div className="content-table">
           <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
           <Playlist
