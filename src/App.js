@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Spotify from './components/Spotify/Spotify';
 import TrackList from './components/TrackList/TrackList';
 import Playlist from './components/Playlist/Playlist';
+import { FaSpotify } from "react-icons/fa";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -66,8 +67,8 @@ function App() {
   };
 
 
-  const updatePlaylistTitle = (newTitle) => {
-    setPlaylistTitle(newTitle);
+  const updatePlaylistTitle = (e) => {
+    setPlaylistTitle(e.target.value);
   }
 
   return (
@@ -78,15 +79,15 @@ function App() {
           <div className='login'>
             {loggedIn ? (
               <div>
-                <h2>Logged In as {userInfo?.display_name}</h2>
+                <h2>{userInfo?.display_name}</h2>
                 {userInfo?.images && userInfo.images.length > 0 && (
                   <img src={userInfo.images[0].url} alt="User Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
                 )}
-                <button className='big-btn' onClick={handleLogout}>Logout</button>
+                <button className='big-btn logout-btn' onClick={handleLogout}>Logout</button>
               </div>
             ) : (
-              <div>
-                <button className='big-btn' onClick={handleLogin}>Login with Spotify</button>
+              <div className="login-info">
+                <button className='big-btn' onClick={handleLogin} ><FaSpotify style={{ fontSize: '24px', paddingRight: "6px" }} /> Login with Spotify</button>
                 <p class="login-desc">Please login to get access to  spotify content.</p>
                 <p class="login-desc-small">You will automatically be redirected to this page after login.</p>
               </div>
@@ -102,6 +103,7 @@ function App() {
             setPlaylistTitle={setPlaylistTitle}
             removeFromPlaylist={removeFromPlaylist}
             savePlaylist={savePlaylist}
+            updatePlaylistTitle={updatePlaylistTitle}
           />
         </div>
       </div>

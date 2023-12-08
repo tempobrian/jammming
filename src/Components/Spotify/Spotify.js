@@ -25,6 +25,43 @@ const Spotify = {
     }
   },
 
+  async searchTracks(query) {
+    const accessToken = this.getAccessToken();
+
+    if (!accessToken) {
+      return null;
+    }
+
+    try {
+      const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${query}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        if (data.tracks) {
+          // Extract relevant information from the response
+          const tracks = data.tracks.items.map((item) => ({
+            id: item.id,
+            name: item.name,
+            artist: item.artists.map((artist) => artist.name).join(', '),
+            album: item.album.name,
+            uri: item.uri,
+          }));
+
+          return tracks;
+        }
+      }
+    } catch (error) {
+      console.error('Error searching tracks:', error);
+    }
+
+    return null;
+  },
+
   login() {
     const redirectUri = 'http://localhost:3000/'; // Update with your app's redirect URI
     const scope = 'user-read-private user-read-email'; // Add necessary scopes

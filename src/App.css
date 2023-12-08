@@ -7,7 +7,7 @@
 }
 
 html {
-  font-family: CircularSpTitle, CircularSpTitle-Tall, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, sans-serif;
+  font-family: sans-serif;
 }
 
 .App {
@@ -39,9 +39,15 @@ ul {
 
 #login-container .login {
   background-color: rgba(0, 0, 0, .5);
-  color: #fff;
+  color: #d8c8c8;
   text-align: center;
   padding: 70px;
+}
+
+.login-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #login-container .login .big-btn {
@@ -49,7 +55,8 @@ ul {
 }
 
 .big-btn {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   outline: none;
   cursor: pointer;
   font-size: 14px;
@@ -60,6 +67,7 @@ ul {
   border: 1px solid transparent;
   letter-spacing: 2px;
   min-width: 160px;
+  max-width: 240px;
   text-transform: uppercase;
   white-space: normal;
   font-weight: 700;
@@ -70,9 +78,17 @@ ul {
   height: 48px;
 }
 
-
 .big-btn:hover {
   background-color: #1db954;
+}
+
+.logout-btn {
+  color: #fff;
+  background-color: #f52828;
+}
+
+.logout-btn:hover {
+  background-color: #a00000;
 }
 
 .content-table {

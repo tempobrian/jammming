@@ -1,10 +1,10 @@
 import React from "react";
 import Input from "../Input/Input";
 
-const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, setPlaylistTitle, savePlaylist }) => {
+const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, updatePlaylistTitle, savePlaylist }) => {
 	return (
 		<div>
-			<Input value={playlistTitle} onChange={(e) => setPlaylistTitle(e.target.value)} />
+			<Input value={playlistTitle} onChange={updatePlaylistTitle} />
 			<ul>
 				{playlist.map((track) => (
 					<li key={track.id}>
