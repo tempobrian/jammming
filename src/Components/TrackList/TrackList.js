@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Spotify from "../Spotify/Spotify";
-import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
+import SearchBar from "../SearchBar/SearchBar";
 
 const TrackList = ({ addToPlaylist }) => {
 	const [searchResults, setSearchResults] = useState([]);

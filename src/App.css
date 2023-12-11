@@ -31,15 +31,11 @@ ul {
   padding: 0;
 }
 
-#login-container {
-  display: -ms-flexbox;
+.container {
   display: flex;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-align: center;
   align-items: center;
   margin: 10px auto;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -55,7 +51,7 @@ ul {
   align-items: center;
 }
 
-#login-container .big-btn {
+.container .big-btn {
   margin: 10px 0 20px 0;
 }
 
