@@ -4,6 +4,7 @@ import Spotify from './components/Spotify/Spotify';
 import TrackList from './components/TrackList/TrackList';
 import Playlist from './components/Playlist/Playlist';
 import { FaSpotify } from "react-icons/fa";
+import Wrapper from './components/Wrapper/Wrapper';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -34,16 +35,8 @@ function App() {
     setUserInfo(null);
   };
 
-  // Hardcoded array of track objects
-  const hardcodedTracks = [
-    { id: 1, name: 'Song 1', artist: 'Artist 1', album: 'Album 1' },
-    { id: 2, name: 'Song 2', artist: 'Artist 2', album: 'Album 2' },
-    // Add more tracks as needed
-  ];
-
   // State to hold the track data
   const [playlistTitle, setPlaylistTitle] = useState('My Playlist');
-  const [trackData, setTrackData] = useState(hardcodedTracks);
   const [playlist, setPlaylist] = useState([]);
 
   const addToPlaylist = (selectedTrack) => {
@@ -75,28 +68,32 @@ function App() {
     <div>
       <div className='background-image'>
         <header className="headline">Jam🎶ming</header>
+
         <div id='login-container'>
-          <div className='login'>
+          <Wrapper minWidth='500px'>
+
             {loggedIn ? (
-              <div>
-                <h2>{userInfo?.display_name}</h2>
+              <div className="user-card">
                 {userInfo?.images && userInfo.images.length > 0 && (
                   <img src={userInfo.images[0].url} alt="User Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
                 )}
+                <h2>{userInfo?.display_name}</h2>
                 <button className='big-btn logout-btn' onClick={handleLogout}>Logout</button>
               </div>
             ) : (
               <div className="login-info">
                 <button className='big-btn' onClick={handleLogin} ><FaSpotify style={{ fontSize: '24px', paddingRight: "6px" }} /> Login with Spotify</button>
-                <p class="login-desc">Please login to get access to  spotify content.</p>
-                <p class="login-desc-small">You will automatically be redirected to this page after login.</p>
+                <p className="login-desc">Please login to get access to  spotify content.</p>
+                <p className="login-desc-small">You will automatically be redirected to this page after login.</p>
               </div>
             )}
-          </div>
+
+          </Wrapper>
+
         </div>
 
         <div className="content-table">
-          <TrackList tracks={trackData} addToPlaylist={addToPlaylist} />
+          <TrackList addToPlaylist={addToPlaylist} />
           <Playlist
             playlist={playlist}
             playlistTitle={playlistTitle}
@@ -107,7 +104,7 @@ function App() {
           />
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
