@@ -4,7 +4,7 @@ import Wrapper from "../Wrapper/Wrapper";
 
 const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, updatePlaylistTitle, savePlaylist }) => {
 	return (
-		<Wrapper>
+		<Wrapper >
 			<Input value={playlistTitle} onChange={updatePlaylistTitle} />
 			<ul>
 				{playlist.map((track) => (
