@@ -2,10 +2,16 @@ import React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 
 const SearchResults = ({ results, addToPlaylist }) => {
+
+  if (!results?.length) {
+    return (<Wrapper>
+      no search results.
+    </Wrapper>)
+  }
   return (
     <Wrapper>
       <ul>
-        {results.map((track) => (
+        {!!results?.length && results.map((track) => (
           <li key={track.id}>
             <div>
               <strong>{track.name}</strong>

@@ -5,10 +5,12 @@ import TrackList from './components/TrackList/TrackList';
 import Playlist from './components/Playlist/Playlist';
 import { FaSpotify } from "react-icons/fa";
 import Wrapper from './components/Wrapper/Wrapper';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +58,42 @@ function App() {
     setPlaylistTitle(e.target.value);
   }
 
+  const handleSearch = async (searchTerm) => {
+    try {
+      const accessToken = Spotify.getAccessToken();
+
+      if (!accessToken) {
+        console.error('Access token not available');
+        return;
+      }
+
+      const response = await fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        // Extract relevant track information
+        const tracks = data.tracks.items.map((track) => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artists.map((artist) => artist.name).join(', '),
+          album: track.album.name,
+          uri: track.uri,
+        }));
+
+        setSearchResults(tracks);
+      } else {
+        console.error('Failed to fetch search results');
+      }
+    } catch (error) {
+      console.error('Error in handleSearch:', error);
+    }
+  };
+
   return (
     <div className='background-image'>
       <header className="headline">Jam🎶ming</header>
@@ -72,8 +110,11 @@ function App() {
               </div>
             </Wrapper>
           </div>
+          <div className="search-container">
+            <SearchBar onSearch={handleSearch} />
+          </div>
           <div className="content-table">
-            <TrackList addToPlaylist={addToPlaylist} />
+            <TrackList searchResults={searchResults} addToPlaylist={addToPlaylist} />
             <Playlist
               playlist={playlist}
               playlistTitle={playlistTitle}
@@ -87,15 +128,17 @@ function App() {
         <div className="container">
           <Wrapper minWidth='500px'>
             <div className="login-info">
-              <button className='big-btn' onClick={handleLogin} ><FaSpotify style={{ fontSize: '24px', paddingRight: "6px" }} /> Login with Spotify</button>
-              <p className="login-desc">Please login to get access to  spotify content.</p>
+              <button className='big-btn' onClick={handleLogin}>
+                <FaSpotify style={{ fontSize: '24px', paddingRight: "6px" }} /> Login with Spotify
+              </button>
+              <p className="login-desc">Please login to get access to Spotify content.</p>
               <p className="login-desc-small">You will automatically be redirected to this page after login.</p>
             </div>
           </Wrapper>
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default App;

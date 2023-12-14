@@ -9,9 +9,9 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div>
-      <input
+      <input className='searchBar'
         type="text"
-        placeholder="Search for a track"
+        placeholder="Search for a song"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />

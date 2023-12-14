@@ -31,6 +31,17 @@ ul {
   padding: 0;
 }
 
+.searchBar {
+  width: 287px;
+  padding: 0.88rem 0;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  margin-bottom: 2.22rem;
+  color: #010c3f;
+  text-align: center;
+  font-size: 1rem;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -98,7 +109,7 @@ ul {
 
 .background-image {
   height: 100%;
-  min-height: 2000px;
+  min-height: 1600px;
   background-image: url(https://content.codecademy.com/programs/react/jammming/background_photo_desktop.jpg);
   background-position: 50%;
   background-repeat: no-repeat;
