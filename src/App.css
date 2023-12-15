@@ -1,153 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
 }
 
-html {
-  font-family: sans-serif;
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
-.App {
-  text-align: center;
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-h2,
-li {
-  margin: 0;
-  color: #fff;
-}
-
-li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px auto;
-  justify-content: center;
-}
-
-.user-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.login-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.container .big-btn {
-  margin: 10px 0 20px 0;
-}
-
-.big-btn {
-  display: flex;
-  align-items: center;
-  outline: none;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
-  transition-property: background-color, border-color, color, box-shadow, filter;
-  transition-duration: .3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  white-space: normal;
-  font-weight: 700;
-  text-align: center;
-  padding: 16px 14px 18px;
-  color: #fff;
-  background-color: #15883e;
-  height: 48px;
-}
-
-.big-btn:hover {
-  background-color: #1db954;
-}
-
-.logout-btn {
-  color: #fff;
-  background-color: #f52828;
-}
-
-.logout-btn:hover {
-  background-color: #a00000;
-}
-
-.content-table {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 20px auto;
-}
-
-.background-image {
-  height: 100%;
-  min-height: 2000px;
-  background-image: url(https://content.codecademy.com/programs/react/jammming/background_photo_desktop.jpg);
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.headline {
-  font-size: 2.4em;
-  background-color: #1e073c;
-  color: #fff;
-  text-align: center;
-  margin-top: 0;
-}
-
-.artist {
-  color: #D8A3FF;
-}
-
-.small-btn {
-  padding: 4px;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #1e073c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -155,4 +21,18 @@ ul {
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
 }
