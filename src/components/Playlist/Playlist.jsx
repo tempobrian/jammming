@@ -3,6 +3,8 @@ import Input from "../Input/Input";
 import Wrapper from "../Wrapper/Wrapper";
 import Button from "../Button/Button";
 import spotify from "../../stores/spotify";
+import { MinusSign } from "../Icons/Icons";
+import { Row, Col, Container } from '../Flexbox/Flexbox';
 
 const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, updatePlaylistTitle }) => {
 
@@ -18,21 +20,25 @@ const Playlist = ({ playlist, playlistTitle, removeFromPlaylist, updatePlaylistT
 	};
 
 	return (
-		<Wrapper >
-			<Input type="text" placeholder="Enter playlist name" value={playlistTitle} onChange={updatePlaylistTitle} />
-			<ul>
-				{playlist.map((track) => (
-					<li key={track.id}>
-						<div>
-							<strong>{track.name}</strong><p className="artist">{track.artist} | {track.album}</p>
-						</div>
+		<Container>
+			<Row>
+				<Wrapper >
+					<Input type="text" placeholder="Enter playlist name" value={playlistTitle} onChange={updatePlaylistTitle} />
+					<ul>
+						{playlist.map((track) => (
+							<li key={track.id}>
+								<div>
+									<strong>{track.name}</strong><p className="artist">{track.artist} | {track.album}</p>
+								</div>
 
-						<button className="small-btn" onClick={() => removeFromPlaylist(track.id)}> - </button>
-					</li>
-				))}
-			</ul>
-			<Button color="secondary" onClick={handleSaveToSpotify}>Save To Spotify</Button>
-		</Wrapper>
+								<MinusSign className="small-btn" onClick={() => removeFromPlaylist(track.id)} />
+							</li>
+						))}
+					</ul>
+					<Button color="secondary" onClick={handleSaveToSpotify}>Save To Spotify</Button>
+				</Wrapper>
+			</Row>
+		</Container>
 	);
 };
 

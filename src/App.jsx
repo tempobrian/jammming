@@ -120,7 +120,7 @@ function App() {
                   </Wrapper>
                 </Col>
               </Row>
-              <Row>
+              <Row centerRow>
                 <Col columns={3}>
                   <SearchBar onSearch={handleSearch} />
                 </Col>

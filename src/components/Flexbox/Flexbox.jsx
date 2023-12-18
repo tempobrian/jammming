@@ -13,6 +13,7 @@ export const Row = styled.div`
   box-sizing: border-box;
   justify-content: ${(props) => (props.centerRow ? 'center' : 'flex-start')};
   align-items: ${(props) => (props.centerRow ? 'center' : 'stretch')};
+  margin-bottom: 20px;
 `;
 
 export const Col = styled.div`

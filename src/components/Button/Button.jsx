@@ -53,6 +53,9 @@ const Button = styled.button`
         return "48px"; // Default height
     }
   }};
+  &:hover {
+    background-image: linear-gradient(rgb(0 0 0/40%) 0 0);
+  }
 `;
 
 export default Button;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { Container, Row, Col } from '../Flexbox/Flexbox';
+import { Row } from '../Flexbox/Flexbox';
 
 
 const SearchBar = ({ onSearch }) => {
@@ -19,7 +19,9 @@ const SearchBar = ({ onSearch }) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <Button color="primary" onClick={handleSearch}>Search</Button>
+      <Row centerRow>
+        <Button rounded color="primary" onClick={handleSearch}>Search</Button>
+      </Row>
     </div>
   );
 };
