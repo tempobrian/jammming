@@ -107,7 +107,7 @@ function App() {
         <Container>
           {loggedIn ? (
             <>
-              <Row centerRow>
+              <Row centerRow bottomMargin>
                 <Col columns={3} center>
                   <Wrapper>
                     {userInfo?.images && userInfo.images.length > 0 && (
@@ -120,23 +120,28 @@ function App() {
                   </Wrapper>
                 </Col>
               </Row>
-              <Row centerRow>
+              <Row centerRow bottomMargin>
                 <Col columns={3}>
                   <SearchBar onSearch={handleSearch} />
                 </Col>
               </Row>
+
               <Row>
                 <Col columns={6}>
-                  <TrackList searchResults={searchResults} addToPlaylist={addToPlaylist} />
+                  <Wrapper>
+                    <TrackList searchResults={searchResults} addToPlaylist={addToPlaylist} />
+                  </Wrapper>
                 </Col>
                 <Col columns={6}>
-                  <Playlist
-                    playlist={playlist}
-                    playlistTitle={playlistTitle}
-                    setPlaylistTitle={setPlaylistTitle}
-                    removeFromPlaylist={removeFromPlaylist}
-                    updatePlaylistTitle={updatePlaylistTitle}
-                  />
+                  <Wrapper >
+                    <Playlist
+                      playlist={playlist}
+                      playlistTitle={playlistTitle}
+                      setPlaylistTitle={setPlaylistTitle}
+                      removeFromPlaylist={removeFromPlaylist}
+                      updatePlaylistTitle={updatePlaylistTitle}
+                    />
+                  </Wrapper>
                 </Col>
               </Row>
             </>

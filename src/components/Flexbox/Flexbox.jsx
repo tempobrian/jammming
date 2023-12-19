@@ -13,16 +13,15 @@ export const Row = styled.div`
   box-sizing: border-box;
   justify-content: ${(props) => (props.centerRow ? 'center' : 'flex-start')};
   align-items: ${(props) => (props.centerRow ? 'center' : 'stretch')};
-  margin-bottom: 20px;
+  margin-bottom: ${(props) => (props.bottomMargin ? '20px' : '0')};
 `;
 
 export const Col = styled.div`
-  flex: 1;
+  flex-grow: 1;
   padding: 10px;
   box-sizing: border-box;
   ${({ columns }) => columns && `flex: 0 0 ${(columns / 12) * 100}%;`}
   ${({ center }) => center && 'text-align: center;'}
-
 `;
 
 // Example usage:

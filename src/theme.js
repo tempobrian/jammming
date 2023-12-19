@@ -5,7 +5,8 @@ const theme = {
     white: '#ffffff',
     success: '#15883e',
     danger: '#f52828',
-    transparent: 'rgba(1, 12, 63, 0.7)'
+    transparent: 'rgba(1, 12, 63, 0.7)',
+    artist: '#d8a3ff'
   }
 }
 

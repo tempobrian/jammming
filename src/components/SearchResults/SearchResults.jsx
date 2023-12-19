@@ -1,45 +1,34 @@
 import React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
-import { Row, Col, Container } from '../Flexbox/Flexbox';
+import { Row, Col } from '../Flexbox/Flexbox';
 import { PlusSign } from '../Icons/Icons';
+import { List, ListItem } from '../List/List'
+import Text from '../Text/Text';
 
 const SearchResults = ({ results, addToPlaylist }) => {
 
   if (!results?.length) {
-    return (<Wrapper>
+    return (<>
       Search for a song, artist or album.
-    </Wrapper>)
+    </>
+    )
   }
   return (
-
-    <Container>
-      <Row centerRow>
-        <Wrapper>
-
-          <ul>
-            {!!results?.length && results.map((track) => (
-              <li key={track.id}>
-                <Row justify-content="space-between">
-                  <Col>
-                    <div>
-                      <strong>{track.name}</strong>
-                      <p className="artist">{track.artist} from the album {track.album}</p>
-                    </div>
-                  </Col>
-                  <Col>
-                    <PlusSign onClick={() => addToPlaylist(track)} />
-                  </Col>
-                </Row>
-              </li>
-
-
-            ))}
-          </ul>
-
-        </Wrapper>
-      </Row>
-    </Container >
-
+    <List>
+      {!!results?.length && results.map((track) => (
+        <ListItem key={track.id}>
+          <Row centerRow>
+            <Col>
+              <Text weight="bold">{track.name}</Text>
+              <Text color="artist" weight="bold" >{track.artist} from {track.album}</Text>
+            </Col>
+            <Col columns={1}>
+              <PlusSign onClick={() => addToPlaylist(track)} />
+            </Col>
+          </Row>
+        </ListItem>
+      ))}
+    </List>
   );
 };
 

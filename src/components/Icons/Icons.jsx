@@ -10,8 +10,18 @@ export const SpotifyIcon = styled(FaSpotify)`
 
 export const PlusSign = styled(CiSquarePlus)`
   font-size: 40px;
+  cursor: pointer;
+  transition: color .25s;
+  &:hover {
+    color: rgba(265, 265, 265, .5);
+  }
 `
 
 export const MinusSign = styled(CiSquareMinus)`
   font-size: 40px;
+  cursor: pointer;
+  transition: color .25s;
+  &:hover {
+    color: rgba(265, 265, 265, .5);
+  }
 `
